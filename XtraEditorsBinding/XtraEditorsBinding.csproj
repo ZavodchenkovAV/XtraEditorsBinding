@@ -46,10 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BindingAttributes\SearchLookupBindingAttribute.cs" />
+    <Compile Include="Attributes\CustomFilterAttribute.cs" />
+    <Compile Include="Attributes\SearchLookupBindingAttribute.cs" />
     <Compile Include="DataLayoutControl\DataLayoutControlExt.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="DataLayoutControl\LayoutCreatorExt.cs" />
     <Compile Include="Interfaces\IBindingDataProvider.cs" />
     <Compile Include="Interfaces\IHasBindingDataProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

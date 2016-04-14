@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BindingDataProvider\SimpleEmployeeDataProvider.cs" />
+    <Compile Include="DataModel\City.cs" />
     <Compile Include="DataModel\Country.cs" />
     <Compile Include="DataModel\Employee.cs" />
     <Compile Include="MainForm.cs">

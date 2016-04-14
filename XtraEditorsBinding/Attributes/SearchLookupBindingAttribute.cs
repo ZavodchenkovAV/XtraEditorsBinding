@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace XtraEditorsBinding.BindingAttributes
+namespace XtraEditorsBinding.Attributes
 {
     public class SearchLookupBindingAttribute: Attribute
     {

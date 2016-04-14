@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using DevExpress.XtraDataLayout;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Repository;
-using XtraEditorsBinding.BindingAttributes;
+using XtraEditorsBinding.Attributes;
 using XtraEditorsBinding.Interfaces;
 
 namespace XtraEditorsBinding.DataLayoutControl
@@ -17,18 +17,26 @@ namespace XtraEditorsBinding.DataLayoutControl
 
         protected override RepositoryItem GetRepositoryItem(LayoutElementBindingInfo bi)
         {
-            var attr = bi.DataInfo.PropertyDescriptor.Attributes[typeof(SearchLookupBindingAttribute)] as SearchLookupBindingAttribute;
-            if (attr != null)
+            var searchLookupAttr = bi.DataInfo.PropertyDescriptor.Attributes[typeof(SearchLookupBindingAttribute)] as SearchLookupBindingAttribute;
+            if (searchLookupAttr != null)
             {
                 bi.EditorType = typeof(SearchLookUpEdit);
                 var ri = new RepositoryItemSearchLookUpEdit();
-                ri.DisplayMember = attr.DisplayMember;
-                ri.ValueMember = attr.ValueMember;
+                ri.DisplayMember = searchLookupAttr.DisplayMember;
+                ri.ValueMember = searchLookupAttr.ValueMember;
+                var customFilterAttr = bi.DataInfo.PropertyDescriptor.Attributes[typeof(CustomFilterAttribute)] as CustomFilterAttribute;
+                if(customFilterAttr!=null)
+                    ri.View.ActiveFilterString = customFilterAttr.FilterString;
                 if(BindingDataProvider!=null)
-                    ri.DataSource = BindingDataProvider.GetData(attr.DataSourceType);
+                    ri.DataSource = BindingDataProvider.GetData(searchLookupAttr.DataSourceType);
                 return ri;
             }
             return base.GetRepositoryItem(bi);
+        }
+
+        public override LayoutCreator CreateLayoutCreator()
+        {
+            return new LayoutCreatorExt(this);
         }
     }
 }

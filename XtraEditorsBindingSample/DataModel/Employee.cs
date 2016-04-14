@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using XtraEditorsBinding.BindingAttributes;
+using XtraEditorsBinding.Attributes;
 
 namespace XtraEditorsBindingSample.DataModel
 {
@@ -42,8 +42,14 @@ namespace XtraEditorsBindingSample.DataModel
         public string Title { get; set; }
 
         [SearchLookupBinding(DataSourceType = typeof(Country), DisplayMember = "Name", ValueMember = "CountryId")]
-        [Display(Name = "CountryBirthPlace")]
+        [CustomFilter(FilterString = "[Deleted]=false")]
+        [Display(Name = "CountryBirthPlace", GroupName = "BirthPlace-")]
         public long CountryBirthPlaceId { get; set; }
+
+        [SearchLookupBinding(DataSourceType = typeof(City), DisplayMember = "Name", ValueMember = "CityId")]
+        [CustomFilter(FilterString = "[Deleted]=false")]
+        [Display(Name = "CityBirthPlace", GroupName = "BirthPlace-")]
+        public long CityBirthPlaceId { get; set; }
         public enum GenderEnum { Male, Female }
     }
 }
