@@ -24,11 +24,6 @@ namespace XtraEditorsBinding.DataLayoutControl
                 var ri = new RepositoryItemSearchLookUpEdit();
                 ri.DisplayMember = searchLookupAttr.DisplayMember;
                 ri.ValueMember = searchLookupAttr.ValueMember;
-                var customFilterAttr = bi.DataInfo.PropertyDescriptor.Attributes[typeof(CustomFilterAttribute)] as CustomFilterAttribute;
-                if(customFilterAttr!=null)
-                    ri.View.ActiveFilterString = customFilterAttr.FilterString;
-                if(BindingDataProvider!=null)
-                    ri.DataSource = BindingDataProvider.GetData(searchLookupAttr.DataSourceType);
                 return ri;
             }
             return base.GetRepositoryItem(bi);
