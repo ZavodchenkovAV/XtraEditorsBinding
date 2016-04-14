@@ -8,12 +8,16 @@ using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Repository;
 using XtraEditorsBinding.Attributes;
 using XtraEditorsBinding.Interfaces;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Collections;
 
 namespace XtraEditorsBinding.DataLayoutControl
 {
     public class DataLayoutControlExt: DevExpress.XtraDataLayout.DataLayoutControl, IHasBindingDataProvider
     {
         public IBindingDataProvider BindingDataProvider { get; set; }
+        protected internal PropertyDescriptorCollection propertyDescriptors;
 
         protected override RepositoryItem GetRepositoryItem(LayoutElementBindingInfo bi)
         {
@@ -32,6 +36,28 @@ namespace XtraEditorsBinding.DataLayoutControl
         public override LayoutCreator CreateLayoutCreator()
         {
             return new LayoutCreatorExt(this);
+        }
+        public override object DataSource
+        {
+            get
+            {
+                return base.DataSource;
+            }
+
+            set
+            {
+                base.DataSource = value;
+                if (value is BindingSource)
+                {
+                    BindingSource bs = value as BindingSource;
+                    if (bs.DataSource is IList)
+                    {
+                        var list = bs.DataSource as IList;
+                        if (list.Count > 0)
+                            propertyDescriptors = TypeDescriptor.GetProperties(list[0]);
+                    }
+                }
+            }
         }
     }
 }
