@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace XtraEditorsBinding.Attributes
 {
-    public class SearchLookupBindingAttribute: Attribute
+    public class SearchLookUpBindingAttribute: Attribute
     {
         public string ValueMember { get; set; }
         public string DisplayMember { get; set; }

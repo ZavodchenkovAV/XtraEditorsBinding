@@ -17,7 +17,7 @@ namespace XtraEditorsBindingSample
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TripXtraForm());
+            Application.Run(new EmployeeForm());
         }
     }
 }

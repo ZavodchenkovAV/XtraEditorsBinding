@@ -21,7 +21,18 @@ namespace XtraEditorsBinding.DataLayoutControl
 
         protected override RepositoryItem GetRepositoryItem(LayoutElementBindingInfo bi)
         {
-            var searchLookupAttr = bi.DataInfo.PropertyDescriptor.Attributes[typeof(SearchLookupBindingAttribute)] as SearchLookupBindingAttribute;
+            var treeListLookupAttr = bi.DataInfo.PropertyDescriptor.Attributes[typeof(TreeListLookUpBindingAttribute)] as TreeListLookUpBindingAttribute;
+            if (treeListLookupAttr != null)
+            {
+                bi.EditorType = typeof(TreeListLookUpEdit);
+                var ri = new RepositoryItemTreeListLookUpEdit();
+                ri.DisplayMember = treeListLookupAttr.DisplayMember;
+                ri.ValueMember = treeListLookupAttr.ValueMember;
+                ri.TreeList.KeyFieldName = treeListLookupAttr.KeyFieldName;
+                ri.TreeList.ParentFieldName = treeListLookupAttr.ParentKeyFieldName;
+                return ri;
+            }
+            var searchLookupAttr = bi.DataInfo.PropertyDescriptor.Attributes[typeof(SearchLookUpBindingAttribute)] as SearchLookUpBindingAttribute;
             if (searchLookupAttr != null)
             {
                 bi.EditorType = typeof(SearchLookUpEdit);

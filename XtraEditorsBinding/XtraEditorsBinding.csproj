@@ -35,6 +35,7 @@
     <Reference Include="DevExpress.XtraEditors.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraTreeList.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms" />
@@ -47,7 +48,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\CustomFilterAttribute.cs" />
-    <Compile Include="Attributes\SearchLookupBindingAttribute.cs" />
+    <Compile Include="Attributes\SearchLookUpBindingAttribute.cs" />
+    <Compile Include="Attributes\TreeListLookUpBindingAttribute.cs" />
     <Compile Include="DataLayoutControl\DataLayoutControlExt.cs">
       <SubType>Component</SubType>
     </Compile>

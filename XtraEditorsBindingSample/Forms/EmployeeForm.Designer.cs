@@ -41,7 +41,7 @@
             this.dataLayoutControlExt1.Location = new System.Drawing.Point(0, 0);
             this.dataLayoutControlExt1.Name = "dataLayoutControlExt1";
             this.dataLayoutControlExt1.Root = this.layoutControlGroup1;
-            this.dataLayoutControlExt1.Size = new System.Drawing.Size(963, 362);
+            this.dataLayoutControlExt1.Size = new System.Drawing.Size(963, 599);
             this.dataLayoutControlExt1.TabIndex = 0;
             this.dataLayoutControlExt1.Text = "dataLayoutControlExt1";
             // 
@@ -51,14 +51,14 @@
             this.layoutControlGroup1.GroupBordersVisible = false;
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(963, 362);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(963, 599);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // EmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(963, 362);
+            this.ClientSize = new System.Drawing.Size(963, 599);
             this.Controls.Add(this.dataLayoutControlExt1);
             this.Name = "EmployeeForm";
             this.Text = "MainForm";

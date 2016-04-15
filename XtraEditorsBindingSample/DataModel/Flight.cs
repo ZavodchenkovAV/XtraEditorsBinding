@@ -17,12 +17,12 @@ namespace XtraEditorsBindingSample.DataModel
         //[Display(Name = "Country", GroupName = "Destination-")]
         //public long CountryId { get; set; }
 
-        [SearchLookupBinding(DataSourceType = typeof(City), DisplayMember = "Name", ValueMember = "CityId")]
+        [SearchLookUpBinding(DataSourceType = typeof(City), DisplayMember = "Name", ValueMember = "CityId")]
         [CustomFilter(FilterString = "[Deleted]=false", Parameters = "CountryId")]
         [Display(Name = "City", GroupName = "Destination-")]
         public long CityId { get; set; }
 
-        [SearchLookupBinding(DataSourceType = typeof(TransportCompany), DisplayMember = "Name", ValueMember = "CountryId")]
+        [SearchLookUpBinding(DataSourceType = typeof(TransportCompany), DisplayMember = "Name", ValueMember = "CountryId")]
         [CustomFilter(FilterString = "[Deleted]=false")]
         [Display(Name = "TransportCompany")]
         public long TransportCompanyId { get; set; }

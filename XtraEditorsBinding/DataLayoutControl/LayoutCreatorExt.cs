@@ -28,25 +28,40 @@ namespace XtraEditorsBinding.DataLayoutControl
             if (ctrl is SearchLookUpEdit)
             {
                 var searchLookupEdit = ctrl as SearchLookUpEdit;
-                searchLookupEdit.Popup -= SearchLookupEdit_Popup;
-                searchLookupEdit.Popup += SearchLookupEdit_Popup;
+                searchLookupEdit.Popup -= LookupEdit_Popup;
+                searchLookupEdit.Popup += LookupEdit_Popup;
                 
                 var searchLookupAttr =
-                    elementBi.DataInfo.PropertyDescriptor.Attributes[typeof (SearchLookupBindingAttribute)] as
-                        SearchLookupBindingAttribute;
+                    elementBi.DataInfo.PropertyDescriptor.Attributes[typeof (SearchLookUpBindingAttribute)] as
+                        SearchLookUpBindingAttribute;
                 if (searchLookupAttr != null && _dataLayoutControlExt.BindingDataProvider != null)
                         searchLookupEdit.Properties.DataSource =
                             _dataLayoutControlExt.BindingDataProvider.GetData(searchLookupAttr.DataSourceType);
             }
+            if (ctrl is TreeListLookUpEdit)
+            {
+                var treeListLookupEdit = ctrl as TreeListLookUpEdit;
+                treeListLookupEdit.Popup -= LookupEdit_Popup;
+                treeListLookupEdit.Popup += LookupEdit_Popup;
+
+                var treeListLookupAttr =
+                    elementBi.DataInfo.PropertyDescriptor.Attributes[typeof(TreeListLookUpBindingAttribute)] as
+                        TreeListLookUpBindingAttribute;
+                if (treeListLookupAttr != null && _dataLayoutControlExt.BindingDataProvider != null)
+                {
+                   treeListLookupEdit.Properties.DataSource =
+                            _dataLayoutControlExt.BindingDataProvider.GetData(treeListLookupAttr.DataSourceType);
+                }
+            }
             return ctrl;
         }
 
-        private void SearchLookupEdit_Popup(object sender, EventArgs e)
+        private void LookupEdit_Popup(object sender, EventArgs e)
         {
-            SearchLookUpEdit searchLookupEdit = sender as SearchLookUpEdit;
-            if (searchLookupEdit.DataBindings.Count == 0 || _dataLayoutControlExt.propertyDescriptors==null) return;
+            LookUpEditBase lookupEdit = sender as LookUpEditBase;
+            if (lookupEdit.DataBindings.Count == 0 || _dataLayoutControlExt.propertyDescriptors==null) return;
 
-            var field = searchLookupEdit.DataBindings[0].BindingMemberInfo.BindingField;
+            var field = lookupEdit.DataBindings[0].BindingMemberInfo.BindingField;
             var pd = _dataLayoutControlExt.propertyDescriptors[field];
 
             var customFilterAttr = pd.Attributes[typeof(CustomFilterAttribute)] as
@@ -69,7 +84,11 @@ namespace XtraEditorsBinding.DataLayoutControl
                 }
                 else
                     criteriaOperator = CriteriaOperator.Parse(customFilterAttr.FilterString);
-                searchLookupEdit.Properties.View.ActiveFilterCriteria = criteriaOperator;
+
+                if(lookupEdit is SearchLookUpEdit)
+                    (lookupEdit as SearchLookUpEdit).Properties.View.ActiveFilterCriteria = criteriaOperator;
+                else if (lookupEdit is TreeListLookUpEdit)
+                    (lookupEdit as TreeListLookUpEdit).Properties.TreeList.ActiveFilterCriteria = criteriaOperator;
             }
         }        
     }

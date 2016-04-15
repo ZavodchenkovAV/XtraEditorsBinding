@@ -21,6 +21,8 @@ namespace XtraEditorsBindingSample.BindingDataProvider
                 return GetTransportCompanies();
             if (type.Equals(typeof(Flight)))
                 return GetFlights();
+            if (type.Equals(typeof(Department)))
+                return GetDepartments();
             throw new NotImplementedException($"for type {type.FullName} no data");
         }
 
@@ -71,6 +73,19 @@ namespace XtraEditorsBindingSample.BindingDataProvider
             flights.Add(new Flight() {FlightId = 11, CityId = 5, TransportCompanyId = 2, Name = "L283"});
             flights.Add(new Flight() {FlightId = 12, CityId = 5, TransportCompanyId = 3, Name = "P748"});
             return flights;
+        }
+        private List<Department> GetDepartments()
+        {
+            List<Department> departments = new List<Department>();
+            departments.Add(new Department() { DepartmentId = 1, Name = "Accounts" });
+            departments.Add(new Department() { DepartmentId = 2, Name = "Integration" });
+            departments.Add(new Department() { DepartmentId = 3, Name = "Development",DepartmentParendId = 2});
+            departments.Add(new Department() { DepartmentId = 4, Name = "Testing",DepartmentParendId = 2});
+            departments.Add(new Department() { DepartmentId = 5, Name = "Analitics",DepartmentParendId = 2});
+            departments.Add(new Department() { DepartmentId = 6, Name = ".Net", DepartmentParendId = 3 });
+            departments.Add(new Department() { DepartmentId = 7, Name = "Java", DepartmentParendId = 3 });
+            departments.Add(new Department() { DepartmentId = 8, Name = "Deleted", DepartmentParendId = 7,Deleted = true});
+            return departments;
         }
     }
 }
