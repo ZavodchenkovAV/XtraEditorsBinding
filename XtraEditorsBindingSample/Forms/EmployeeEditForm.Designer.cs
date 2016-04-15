@@ -1,6 +1,6 @@
 ﻿namespace XtraEditorsBindingSample.Forms
 {
-    partial class EmployeeForm
+    partial class EmployeeEditForm
     {
         /// <summary>
         /// Required designer variable.

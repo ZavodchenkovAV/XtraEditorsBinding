@@ -12,11 +12,13 @@ using XtraEditorsBindingSample.DataModel;
 
 namespace XtraEditorsBindingSample.Forms
 {
-    public partial class EmployeeForm : Form
+    public partial class EmployeeEditForm : Form
     {
-        public EmployeeForm()
+        private readonly Employee _employee;
+        public EmployeeEditForm(Employee employee)
         {
             InitializeComponent();
+            _employee = employee;
         }
 
         protected override void OnLoad(EventArgs e)
@@ -25,7 +27,7 @@ namespace XtraEditorsBindingSample.Forms
             dataLayoutControlExt1.BindingDataProvider = dataProvider;
 
             var list = new List<Employee>();
-            list.Add(new Employee() { LastName = "dfgdf" });
+            list.Add(_employee);
             BindingSource source = new BindingSource();
             source.DataSource = list;
             dataLayoutControlExt1.DataSource = source;

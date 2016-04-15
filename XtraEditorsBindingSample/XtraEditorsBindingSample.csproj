@@ -36,6 +36,7 @@
     <Reference Include="DevExpress.Data.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Printing.v15.1.Core, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -63,11 +64,17 @@
     <Compile Include="DataModel\Flight.cs" />
     <Compile Include="DataModel\TransportCompany.cs" />
     <Compile Include="DataModel\Trip.cs" />
-    <Compile Include="Forms\EmployeeForm.cs">
+    <Compile Include="Forms\EmployeeEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\EmployeeForm.Designer.cs">
-      <DependentUpon>EmployeeForm.cs</DependentUpon>
+    <Compile Include="Forms\EmployeeEditForm.Designer.cs">
+      <DependentUpon>EmployeeEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\EmployeeListRibbonForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EmployeeListRibbonForm.Designer.cs">
+      <DependentUpon>EmployeeListRibbonForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\EmployeeXtraFormDesign.cs">
       <SubType>Form</SubType>
@@ -83,8 +90,11 @@
     <Compile Include="Forms\TripXtraForm.Designer.cs">
       <DependentUpon>TripXtraForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Forms\EmployeeForm.resx">
-      <DependentUpon>EmployeeForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\EmployeeEditForm.resx">
+      <DependentUpon>EmployeeEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EmployeeListRibbonForm.resx">
+      <DependentUpon>EmployeeListRibbonForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\EmployeeXtraFormDesign.resx">
       <DependentUpon>EmployeeXtraFormDesign.cs</DependentUpon>

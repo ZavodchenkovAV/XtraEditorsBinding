@@ -50,7 +50,7 @@ namespace XtraEditorsBindingSample.DataModel
         [Display(GroupName = "{Tabs}/Job", Name = "Department")]
         public long? DepartmentId { get; set; }
 
-        public List<Flight> Flights { get; set; }
+        //public List<Flight> Flights { get; set; }
 
     }
 }
