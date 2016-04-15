@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DevExpress.Utils.OAuth;
 using XtraEditorsBinding.Attributes;
 
 namespace XtraEditorsBindingSample.DataModel
@@ -47,7 +48,7 @@ namespace XtraEditorsBindingSample.DataModel
         public long CountryBirthPlaceId { get; set; }
 
         [SearchLookupBinding(DataSourceType = typeof(City), DisplayMember = "Name", ValueMember = "CityId")]
-        [CustomFilter(FilterString = "[Deleted]=false")]
+        [CustomFilter(FilterString = "[Deleted]=false", Parameters= "CountryBirthPlaceId")]
         [Display(Name = "CityBirthPlace", GroupName = "BirthPlace-")]
         public long CityBirthPlaceId { get; set; }
         public enum GenderEnum { Male, Female }

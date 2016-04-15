@@ -9,6 +9,7 @@ using DevExpress.XtraEditors;
 using XtraEditorsBinding.Attributes;
 using System.ComponentModel;
 using System.Collections;
+using DevExpress.Data.Filtering;
 
 namespace XtraEditorsBinding.DataLayoutControl
 {
@@ -52,7 +53,23 @@ namespace XtraEditorsBinding.DataLayoutControl
                         CustomFilterAttribute;
             if (customFilterAttr != null)
             {
-                searchLookupEdit.Properties.View.ActiveFilterString = customFilterAttr.FilterString;
+                CriteriaOperator criteriaOperator = null;
+                if (!string.IsNullOrEmpty(customFilterAttr.Parameters))
+                {
+                    var paramList = customFilterAttr.Parameters.Split(',');
+                    List<object> values = new List<object>();
+                    foreach (var param in paramList)
+                    {
+                        var fpd = _dataLayoutControlExt.propertyDescriptors[param];
+
+                        var value = fpd.GetValue(_dataLayoutControlExt.Current);
+                        values.Add(value);
+                    }
+                    criteriaOperator = CriteriaOperator.Parse(customFilterAttr.FilterString,values.ToArray());
+                }
+                else
+                    criteriaOperator = CriteriaOperator.Parse(customFilterAttr.FilterString);
+                searchLookupEdit.Properties.View.ActiveFilterCriteria = criteriaOperator;
             }
         }        
     }

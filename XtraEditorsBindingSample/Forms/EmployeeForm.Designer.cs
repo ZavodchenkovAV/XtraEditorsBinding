@@ -1,6 +1,6 @@
-﻿namespace XtraEditorsBindingSample
+﻿namespace XtraEditorsBindingSample.Forms
 {
-    partial class MainForm
+    partial class EmployeeForm
     {
         /// <summary>
         /// Required designer variable.
@@ -54,13 +54,13 @@
             this.layoutControlGroup1.Size = new System.Drawing.Size(963, 362);
             this.layoutControlGroup1.TextVisible = false;
             // 
-            // MainForm
+            // EmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(963, 362);
             this.Controls.Add(this.dataLayoutControlExt1);
-            this.Name = "MainForm";
+            this.Name = "EmployeeForm";
             this.Text = "MainForm";
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControlExt1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();

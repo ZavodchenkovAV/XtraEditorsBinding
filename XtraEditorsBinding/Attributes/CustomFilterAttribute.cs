@@ -9,7 +9,6 @@ namespace XtraEditorsBinding.Attributes
     public class CustomFilterAttribute:Attribute
     {
         public string FilterString { get; set; }
-        public string SourceKeyField { get; set; }
-        public string ForeignKeyField { get; set; }
+        public string Parameters { get; set; }
     }
 }

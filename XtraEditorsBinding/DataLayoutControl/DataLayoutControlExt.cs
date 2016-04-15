@@ -50,13 +50,24 @@ namespace XtraEditorsBinding.DataLayoutControl
                 if (value is BindingSource)
                 {
                     BindingSource bs = value as BindingSource;
-                    if (bs.DataSource is IList)
+                    if (bs.Current != null)
                     {
-                        var list = bs.DataSource as IList;
-                        if (list.Count > 0)
-                            propertyDescriptors = TypeDescriptor.GetProperties(list[0]);
+                        propertyDescriptors = TypeDescriptor.GetProperties(bs.Current);
                     }
                 }
+            }
+        }
+
+        public object Current
+        {
+            get
+            {
+                if (DataSource != null && DataSource is BindingSource)
+                {
+                    BindingSource bs = DataSource as BindingSource;
+                    return bs.Current;
+                }
+                return null;
             }
         }
     }
