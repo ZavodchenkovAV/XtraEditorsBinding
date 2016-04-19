@@ -59,10 +59,16 @@ namespace XtraEditorsBinding.DataLayoutControl
         private void LookupEdit_Popup(object sender, EventArgs e)
         {
             LookUpEditBase lookupEdit = sender as LookUpEditBase;
-            if (lookupEdit.DataBindings.Count == 0 || _dataLayoutControlExt.propertyDescriptors==null) return;
+            if (lookupEdit==null || lookupEdit.DataBindings.Count == 0) return;
 
-            var field = lookupEdit.DataBindings[0].BindingMemberInfo.BindingField;
-            var pd = _dataLayoutControlExt.propertyDescriptors[field];
+            var binding = lookupEdit.DataBindings[0];
+            if(binding.BindingManagerBase.Count == 0) return;
+            var source = binding.BindingManagerBase.Current;
+            if(source ==null) return;
+            var memberInfo = binding.BindingMemberInfo;
+            var field = memberInfo.BindingField;
+            var pdc = TypeDescriptor.GetProperties(source.GetType());
+            PropertyDescriptor pd= pdc[field];
 
             var customFilterAttr = pd.Attributes[typeof(CustomFilterAttribute)] as
                         CustomFilterAttribute;
@@ -75,9 +81,9 @@ namespace XtraEditorsBinding.DataLayoutControl
                     List<object> values = new List<object>();
                     foreach (var param in paramList)
                     {
-                        var fpd = _dataLayoutControlExt.propertyDescriptors[param];
+                        var fpd = pdc[param];
 
-                        var value = fpd.GetValue(_dataLayoutControlExt.Current);
+                        var value = fpd.GetValue(source);
                         values.Add(value);
                     }
                     criteriaOperator = CriteriaOperator.Parse(customFilterAttr.FilterString,values.ToArray());

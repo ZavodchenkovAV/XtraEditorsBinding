@@ -27,5 +27,6 @@ namespace XtraEditorsBindingSample.DataModel
         [Display(Name = "Alien", GroupName = "<Name->")]
         public bool? Alien { get; set; }
         public enum GenderEnum { Male, Female }
+        
     }
 }

@@ -11,6 +11,10 @@ namespace XtraEditorsBindingSample.DataModel
 {
     public class Employee
     {
+        public Employee()
+        {
+            Personal = new EmployeePersonal();
+        }
         // The two items below will be displayed by DataLayoutControl   
         // in a borderless Name group without a title 
         [Display(GroupName = "<Name|>", Name = "Last name")]
@@ -19,7 +23,7 @@ namespace XtraEditorsBindingSample.DataModel
         [Display(GroupName = "<Name|>", Name = "First name", Order = 0)]
         public string FirstName { get; set; }
 
-        [Display(GroupName = "{Tabs}/Personal", Name = "Birth date", Order = 1)]
+        [Display(GroupName = "{Tabs}/Personal", Name = "Personal", Order = 1)]
         public EmployeePersonal Personal { get; set; }
 
         //The four items below will go to a Contact tab within tabbed Tabs group.  

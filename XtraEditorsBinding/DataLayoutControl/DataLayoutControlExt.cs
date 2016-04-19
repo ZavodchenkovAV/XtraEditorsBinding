@@ -17,7 +17,7 @@ namespace XtraEditorsBinding.DataLayoutControl
     public class DataLayoutControlExt: DevExpress.XtraDataLayout.DataLayoutControl, IHasBindingDataProvider
     {
         public IBindingDataProvider BindingDataProvider { get; set; }
-        protected internal PropertyDescriptorCollection propertyDescriptors;
+        //protected internal PropertyDescriptorCollection PropertyDescriptors;
 
         protected override RepositoryItem GetRepositoryItem(LayoutElementBindingInfo bi)
         {
@@ -48,38 +48,25 @@ namespace XtraEditorsBinding.DataLayoutControl
         {
             return new LayoutCreatorExt(this);
         }
-        public override object DataSource
-        {
-            get
-            {
-                return base.DataSource;
-            }
+        //public override object DataSource
+        //{
+        //    get
+        //    {
+        //        return base.DataSource;
+        //    }
 
-            set
-            {
-                base.DataSource = value;
-                if (value is BindingSource)
-                {
-                    BindingSource bs = value as BindingSource;
-                    if (bs.Current != null)
-                    {
-                        propertyDescriptors = TypeDescriptor.GetProperties(bs.Current);
-                    }
-                }
-            }
-        }
-
-        public object Current
-        {
-            get
-            {
-                if (DataSource != null && DataSource is BindingSource)
-                {
-                    BindingSource bs = DataSource as BindingSource;
-                    return bs.Current;
-                }
-                return null;
-            }
-        }
+        //    set
+        //    {
+        //        base.DataSource = value;
+        //        if (value is BindingSource)
+        //        {
+        //            BindingSource bs = value as BindingSource;
+        //            if (bs.Current != null)
+        //            {
+        //                PropertyDescriptors = TypeDescriptor.GetProperties(bs.Current);
+        //            }
+        //        }
+        //    }
+        //}
     }
 }
